@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/format-article.ts": {
+      "maxDuration": 60
+    }
+  }
+}

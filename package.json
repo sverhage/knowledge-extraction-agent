@@ -1,0 +1,21 @@
+{
+  "name": "knowledge-extraction-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "@notionhq/client": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@vercel/node": "latest",
+    "typescript": "latest",
+    "vercel": "latest"
+  }
+}
