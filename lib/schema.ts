@@ -35,4 +35,3 @@ export const ClaudeResultSchema = z.object({
 });
 
 export type ClaudeResult = z.infer<typeof ClaudeResultSchema>;
-export type FormatRequest = z.infer<typeof FormatRequestSchema>;

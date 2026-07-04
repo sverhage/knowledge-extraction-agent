@@ -7,8 +7,3 @@ export function renderNotionMarkdown(result: ClaudeResult): string {
     result.cleaned_article_markdown.trim()
   ].join("\n");
 }
-
-export function truncateForNotionText(value: string, max = 1900): string {
-  if (value.length <= max) return value;
-  return `${value.slice(0, max - 1)}…`;
-}

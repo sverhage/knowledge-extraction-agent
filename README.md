@@ -1,50 +1,55 @@
 # Knowledge Extraction Agent
 
-A Vercel + Claude + Notion starter project for formatting saved articles in Sasha's Notion Article Tracker.
+A lightweight Vercel + Claude + Notion service that turns saved articles into structured knowledge notes.
 
-## What it does
+## Current Release
 
-`POST /api/format-article`
+KEA Release 0.2
 
-1. Receives a Notion page ID.
-2. Fetches the Notion page content.
-3. Sends the content to Claude using the KEA prompt.
-4. Replaces the page body with:
-   - Summary by Claude
-   - Cleaned Article
-5. Updates Notion properties:
-   - Processing Status
-   - Formatted
-   - Prompt Version
-   - Claude Model
-   - Last Processed
-   - Summary
-   - Source
-   - Author
-   - Publication Date
-   - Importance
-   - Evergreen Score
-   - Knowledge Score
+## What works now
 
-## Required environment variables
+- `/api/health` confirms the deployment is live.
+- `/api/format-article` validates incoming requests and returns a scaffold response.
+- Anthropic and Notion clients are configured for the next release.
+- Environment variables are read safely from Vercel.
 
-See `.env.example`.
+## Required Environment Variables
 
-## Local development
+- `ANTHROPIC_API_KEY`
+- `NOTION_TOKEN`
+- `KEA_WEBHOOK_SECRET`
+- `CLAUDE_MODEL`
+- `PROMPT_VERSION`
 
-```bash
-npm install
-npm run dev
+## Test Health Endpoint
+
+Visit:
+
+```text
+https://YOUR-PROJECT.vercel.app/api/health
 ```
 
-## Test request
+Expected response:
+
+```json
+{
+  "status": "ok",
+  "service": "knowledge-extraction-agent",
+  "release": "0.2.0",
+  "promptVersion": "KEA-1.0.0",
+  "hasAnthropicKey": true,
+  "hasNotionToken": true
+}
+```
+
+## Test Format Endpoint
 
 ```bash
-curl -X POST http://localhost:3000/api/format-article \
+curl -X POST https://YOUR-PROJECT.vercel.app/api/format-article \
   -H "Content-Type: application/json" \
-  -d '{"pageId":"YOUR_PAGE_ID","trigger":"manual","secret":"YOUR_SECRET"}'
+  -d '{"pageId":"test-page-id","trigger":"manual","secret":"YOUR_WEBHOOK_SECRET"}'
 ```
 
-## Deployment
+## Next Release
 
-Deploy on Vercel and add all environment variables in Project Settings → Environment Variables.
+KEA Release 0.3 will connect the live endpoint to Claude and Notion page content.
