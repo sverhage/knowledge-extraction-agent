@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { config } from "../lib/config";
-import { logger } from "../lib/logger";
-import { FormatRequestSchema, ClaudeResultSchema } from "../lib/schema";
-import { renderNotionMarkdown } from "../lib/render";
+import { config } from "../lib/config.js";
+import { logger } from "../lib/logger.js";
+import { FormatRequestSchema, ClaudeResultSchema } from "../lib/schema.js";
+import { renderNotionMarkdown } from "../lib/render.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
